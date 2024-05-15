@@ -9,9 +9,19 @@ from films.forms import RegisterForm
 
 
 # Create your views here.
-class IndexView(LoginView):
+class IndexView(TemplateView):
     template_name = "index.html"
 
 
 class Login(LoginView):
     template_name = "registration/login.html"
+
+
+class RegisterView(FormView):
+    form_class = RegisterForm
+    template_name = "registration/register.html"
+    success_url = reverse_lazy("login")
+
+    def form_valid(self, form: RegisterForm) -> HttpResponse:
+        form.save()
+        return super().form_valid(form)
