@@ -14,7 +14,7 @@
             <div class="form-group mb-3" >
                 <label>{{field.label_tag}}</label>
                 {{field.erros}}
-                {% render_field class="form-control" placeholder=field.name %}
+                {% render_field field class="form-control" placeholder=field.name %}
             </div>
         {% endfor %}
 

@@ -9,5 +9,9 @@ from films.forms import RegisterForm
 
 
 # Create your views here.
-class IndexView(TemplateView):
+class IndexView(LoginView):
     template_name = "index.html"
+
+
+class Login(LoginView):
+    template_name = "registration/login.html"
