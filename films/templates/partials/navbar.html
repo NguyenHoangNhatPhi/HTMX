@@ -8,9 +8,13 @@
         <a  class="nav-link" href="#">Movies</a>
       </li>
       <li class="nav-item" >
-        <a class="nav-link" href="{% url 'logout' %}" >
+      <form method="POST" action="{% url 'logout' %}" >
+          {% csrf_token %}
+        {% comment %} <a class="nav-link" href="{% url 'logout' %}" >
             Logout
-        </a>
+        </a> {% endcomment %}
+        <button class="nav-link border-0 btn-outline-primary no-hover " type="submit"  >Logout</button>
+        </form>
       </li>
       {% else %} 
         <li class="nav-item" >
