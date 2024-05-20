@@ -10,3 +10,9 @@ urlpatterns = [
     path("logout/", LogoutView.as_view(), name="logout"),
     path("register/", views.RegisterView.as_view(), name="register"),
 ]
+
+htmx_urlpatterns = [
+    path("check-username/", views.check_username, name="check-username")
+]
+
+urlpatterns += htmx_urlpatterns
