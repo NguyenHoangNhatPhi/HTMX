@@ -12,7 +12,7 @@
           <div class="mb-3" >
             <label>{{form.username.label_tag}}</label>
             {{form.username.errors}}
-            {% render_field form.username class="form-control" hx-post="/check-username/" hx-trigger="keyup" hx-target="#username-error"   %}
+            {% render_field form.username class="form-control" hx-post="/check-username/" hx-trigger="keyup changed delay:1s" hx-target="#username-error" hx-swap="outerHTML"   %}
              <div id="username-error" class="mt-1"></div>
             </div>
             
