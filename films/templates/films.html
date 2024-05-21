@@ -11,7 +11,7 @@
         class="form-control-sm me-2"
         placeholder="Enter a film name"
       />
-      <button type="submit" class="btn btn-success btn-sm">Add Film</button>
+      <button hx-post="{% url 'add-film' %}" hx-target="#film-list" type="submit" class="btn btn-success btn-sm">Add Film</button>
     </form>
   </div>
 
