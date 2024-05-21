@@ -39,3 +39,5 @@ def check_username(request):
         return HttpResponse(
             "<div id='username-error' class='primary' >This username is available</div>"
         )
+class Myfilms(TemplateView):
+    template_name ="films.html"
