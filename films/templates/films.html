@@ -1,7 +1,7 @@
 {% extends "base.html" %} {% block content %}
 
 <div class="col-10 offset-1">
-  <div class="d-flex justify-content-between align-items-center " >
+  <div class="d-flex justify-content-between align-items-center">
     <p class="lead ms-1 text-center">My Films</p>
     <form class="d-flex align-items-center">
       {% csrf_token %}
@@ -11,16 +11,20 @@
         class="form-control-sm me-2"
         placeholder="Enter a film name"
       />
-      <button hx-post="{% url 'add-film' %}" hx-target="#film-list" type="submit" class="btn btn-success btn-sm">Add Film</button>
+      <button
+        hx-post="{% url 'add-film' %}"
+        hx-target="#film-list"
+        type="submit"
+        class="btn btn-success btn-sm"
+      >
+        Add Film
+      </button>
     </form>
   </div>
 
   <hr />
 
-    <div id="film-list">
-        {% include "partials/film-list.html" %}
-    </div>
-
+  <div id="film-list">{% include "partials/film-list.html" %}</div>
 </div>
 
 {% endblock content %}
