@@ -13,4 +13,28 @@
       Your List
     </button>
   </div>
+
+  <div>
+    {% if userfilm.film.photo %}
+    <img
+      src="{{userfilm.film.photo.url}}"
+      style="max-width: 200px; max-height: 200px"
+    />
+    {% else %}
+    <p>No Photo :(</p>
+    {% endif %}
+
+    <form
+      hx-encoding="multipart/form-data"
+      hx-post="{% url 'upload-photo' userfilm.pk %}"
+      hx-target="#film-list"
+    >
+      {% csrf_token %}
+      <div class="form-group">
+        <input type="file" name="photo" />
+      </div>
+
+      <button class="btn btn-success mt-2" type="submit">Upload File</button>
+    </form>
+  </div>
 </div>
