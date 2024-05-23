@@ -1,5 +1,5 @@
 from django.db.models.query import QuerySet
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http.response import HttpResponse, HttpResponsePermanentRedirect
 from django.contrib.auth.views import LoginView
 from django.urls import reverse_lazy
@@ -121,3 +121,9 @@ def sort(request):
         films.append(userfilm)
 
     return render(request, "partials/film-list.html", {"films": films})
+
+
+@login_required
+def detail(request, pk):
+    userfilm = get_object_or_404(UserFilms, pk=pk)
+    return render(request, "partials/film-detail.html", {"userfilm": userfilm})
