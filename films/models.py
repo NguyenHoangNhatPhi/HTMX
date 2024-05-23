@@ -12,6 +12,7 @@ class Film(models.Model):
     users = models.ManyToManyField(
         User, related_name="films", through="UserFilms"
     )  # user.films.all()
+    photo = models.ImageField(upload_to="film_photos/", null=True, blank=True)
 
     class Meta:
         ordering = [Lower("name")]

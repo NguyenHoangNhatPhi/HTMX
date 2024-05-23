@@ -127,3 +127,9 @@ def sort(request):
 def detail(request, pk):
     userfilm = get_object_or_404(UserFilms, pk=pk)
     return render(request, "partials/film-detail.html", {"userfilm": userfilm})
+
+
+@login_required
+def films_parital(request):
+    films = UserFilms.objects.filter(user=request.user)
+    return render(request, "partials/film-list.html", {"films": films})
