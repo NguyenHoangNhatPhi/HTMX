@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "django_extensions",
     "films",
     "debug_toolbar",
+    "django_htmx",
 ]
 
 MIDDLEWARE = [
@@ -48,6 +49,7 @@ MIDDLEWARE = [
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "debug_toolbar.middleware.DebugToolbarMiddleware",
+    "django_htmx.middleware.HtmxMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
@@ -138,3 +140,6 @@ LOGOUT_REDIRECT_URL = "index"
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
+
+
+PAGINATE_BY = 20

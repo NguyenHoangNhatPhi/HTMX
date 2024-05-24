@@ -12,6 +12,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.decorators.http import require_http_methods
 from django.contrib import messages
+from django.conf import settings
 
 from films.forms import RegisterForm
 from films.models import Film, UserFilms
@@ -39,11 +40,17 @@ class RegisterView(FormView):
 
 class FilmList(LoginRequiredMixin, ListView):
     template_name = "films.html"
-    model = Film
+    model = UserFilms
+    paginate_by = settings.PAGINATE_BY
     context_object_name = "films"
 
+    def get_template_names(self):
+        if self.request.htmx:
+            return "partials/film-list-elements.html"
+        return "films.html"
+
     def get_queryset(self) -> QuerySet[Film]:
-        return UserFilms.objects.filter(user=self.request.user)
+        return UserFilms.objects.prefetch_related("film").filter(user=self.request.user)
 
 
 # HTMX handles
